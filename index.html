@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Heart</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="heart-removebg-preview (1).png" type="image/x-icon">
+</head>
+<body>
+
+  <!-- Audio Player -->
+  <audio id="bg-music" preload="auto" loop muted>
+    <source src="SLIDECANCEL [a9tNLDYKM_U].mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    const audio = document.getElementById("bg-music");
+
+    function tryPlayAudio() {
+      audio.currentTime = 3;
+      audio.play().then(() => {
+        audio.muted = false;
+        console.log("Audio autoplayed and unmuted");
+      }).catch(() => {
+        document.addEventListener("click", function clickHandler() {
+          audio.currentTime = 3;
+          audio.play().then(() => {
+            audio.muted = false;
+            console.log("Audio started after click");
+            document.removeEventListener("click", clickHandler);
+          });
+        });
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", tryPlayAudio);
+  </script>
+
+  <!-- Hey There GIF -->
+  <div id="heyGif" class="center-screen">
+    <img src="c07a0e54601516dbf8b399832636507a.gif" alt="Hey there!" />
+  </div>
+
+  <!-- Question Screen -->
+  <div id="questionScreen" class="center-screen">
+    <h2>Do you want to see something special?</h2>
+    <button class="button yes" onclick="showPoem()">Yes ❤️</button>
+    <button class="button no" onclick="showRejection()">No ⭕</button>
+  </div>
+
+  <!-- Rejection Screen -->
+  <div id="rejectionScreen" class="center-screen">
+    <img src="1608081604_72238.gif" alt="It's fine" />
+    <p>It's okay...you want it the hard way, I'll find my way to your heart ❤️</p>
+    <button class="button refresh" onclick="location.reload()">refresh</button>
+  </div>
+
+  <!-- Background Video + Poem Screen -->
+  <div id="poemScreen">
+    <video autoplay muted loop id="bg-video">
+      <source src="videoplayback.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
+
+    <div class="poem-container">
+      <div class="line">From the first glance, my soul took flight ✈️,</div>
+      <div class="line">Drawn to your warmth, your radiant light 🌟.</div>
+      <div class="line">Your smile outshone the morning sun 🌞,</div>
+      <div class="line">And in that moment, love begun 💖.</div>
+      <div class="line">You looked away, then back again 👀,</div>
+      <div class="line">A spark igniting deep within 🔥.</div>
+      <div class="line">Each word you spoke, a sacred song 🎶,</div>
+      <div class="line">A place where all my fears felt gone 🙌.</div>
+      <div class="line">"You are altogether beautiful, my love 💕,"</div>
+      <div class="line">A gift that surely came from above 🙏. – Song of Songs 4:7</div>
+      <div class="line">Your voice like waters calm and deep 🌊,</div>
+      <div class="line">Your laughter wakes my soul from sleep 😄.</div>
+      <div class="line">You clothe my days in purest grace 🌸,</div>
+      <div class="line">With just one look, you bless this place ✨.</div>
+      <div class="line">“Many waters cannot quench love’s flame 🔥,”</div>
+      <div class="line">Still burns my heart when I speak your name ❤️. – Song of Songs 8:7</div>
+      <div class="line">Eliane, my beloved, my sacred muse 🎨,</div>
+      <div class="line">With you, I simply cannot lose 💪.</div>
+      <div class="line">You're more than beauty, more than kind 💖,</div>
+      <div class="line">A rare and godly heart combined 🙏.</div>
+      <div class="line">"She is clothed with strength and dignity 💪," they say,</div>
+      <div class="line">You live those words in every way 🌟. – Proverbs 31:25</div>
+      <div class="line">Your hands bring peace, your eyes bring cheer ✨,</div>
+      <div class="line">And I feel heaven when you're near 😇.</div>
+      <div class="line">Like the sunrise touches morning skies 🌅,</div>
+      <div class="line">Your beauty greets my sleepy eyes 😴.</div>
+      <div class="line">Each moment near you feels divine ✨,</div>
+      <div class="line">Like streams that flow, Your love unbound💞.</div>
+      <div class="line">In Your arms, forever near🔒,</div>
+      <div class="line">I find my peace, my soul sincere💖.</div>
+      <div class="line">Until my final breath is through 💨,</div>
+      <div class="line">Eliane, I’ll belong to you 💍.</div>
+      <div class="line final">With love, Jonathan.k❤️</div>
+    </div>
+
+    <!-- Animated Refresh Button -->
+    <button class="button refresh" onclick="location.reload()">refresh</button>
+  </div>
+
+  <script>
+    // Initial display logic
+    window.onload = function () {
+      document.getElementById("heyGif").style.display = "block";
+      setTimeout(() => {
+        document.getElementById("heyGif").style.display = "none";
+        document.getElementById("questionScreen").style.display = "block";
+      }, 10000); // Show for 10 seconds
+    };
+
+    function showPoem() {
+      document.getElementById("questionScreen").style.display = "none";
+      document.getElementById("poemScreen").style.display = "block";
+    }
+
+    function showRejection() {
+      document.getElementById("questionScreen").style.display = "none";
+      document.getElementById("rejectionScreen").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>

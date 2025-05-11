@@ -94,6 +94,7 @@ body, html {
 .line:nth-child(31) { animation-delay: 195s; }
 .line:nth-child(32) { animation-delay: 201.5s; }
 .line:nth-child(33) { animation-delay: 208s; }
+.line:nth-child(34) { animation-delay: 214.5s; }
 
 /* Keyframes for fadeInOut */
 @keyframes fadeInOut {

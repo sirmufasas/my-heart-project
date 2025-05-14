@@ -11,34 +11,60 @@
 
 <body>
 
-  <!-- Audio Player -->
-  <audio id="bg-music" preload="auto" loop muted>
-    <source src="SLIDECANCEL [a9tNLDYKM_U].mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-  </audio>
+<!-- Audio Players -->
+<audio id="audio1" preload="auto" muted>
+  <source src="SLIDECANCEL [a9tNLDYKM_U].mp3" type="audio/mp3">
+  Your browser does not support the audio element.
+</audio>
 
-  <script>
-    const audio = document.getElementById("bg-music");
+<audio id="audio2" preload="auto" muted>
+  <source src="Sinmidele - heaven on earth (official video) [PlESn4acxNY] (1).mp3" type="audio/mp3">
+  Your browser does not support the audio element.
+</audio>
 
-    function tryPlayAudio() {
-      audio.currentTime = 3;
-      audio.play().then(() => {
-        audio.muted = false;
-        console.log("Audio autoplayed and unmuted");
-      }).catch(() => {
-        document.addEventListener("click", function clickHandler() {
-          audio.currentTime = 3;
-          audio.play().then(() => {
-            audio.muted = false;
-            console.log("Audio started after click");
-            document.removeEventListener("click", clickHandler);
-          });
-        });
-      });
+<script>
+  const audio1 = document.getElementById("audio1");
+  const audio2 = document.getElementById("audio2");
+
+  function playAudio1() {
+    audio1.currentTime = 3;
+    audio1.play().then(() => {
+      audio1.muted = false;
+      console.log("Playing audio1");
+    }).catch(() => {
+      waitForUserInteraction(() => playAudio1());
+    });
+  }
+
+  function playAudio2() {
+    audio2.play().then(() => {
+      audio2.muted = false;
+      console.log("Playing audio2");
+    }).catch(() => {
+      waitForUserInteraction(() => playAudio2());
+    });
+  }
+
+  function waitForUserInteraction(callback) {
+    function clickHandler() {
+      callback();
+      document.removeEventListener("click", clickHandler);
     }
+    document.addEventListener("click", clickHandler);
+  }
 
-    document.addEventListener("DOMContentLoaded", tryPlayAudio);
-  </script>
+  audio1.addEventListener("ended", () => {
+    playAudio2();
+  });
+
+  audio2.addEventListener("ended", () => {
+    playAudio1();
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    playAudio1(); // Start the loop
+  });
+</script>
 
   <!-- Hey There GIF -->
   <div id="heyGif" class="center-screen">
@@ -66,42 +92,33 @@
       Your browser does not support HTML5 video.
     </video>
 
-    <div class="poem-container">
-      <div class="line">To Eliane, My heart, My love, My light 💖,</div>
-      <div class="line">From the first glance, my soul took flight ✈️,</div>
-      <div class="line">Drawn to your warmth, your radiant light 🌟.</div>
-      <div class="line">Your smile outshone the morning sun 🌞,</div>
-      <div class="line">And in that moment, love begun 💖.</div>
-      <div class="line">You looked away, then back again 👀,</div>
-      <div class="line">A spark igniting deep within 🔥.</div>
-      <div class="line">Each word you spoke, a sacred song 🎶,</div>
-      <div class="line">A place where all my fears felt gone 🙌.</div>
-      <div class="line">"You are altogether beautiful, my love 💕,"</div>
-      <div class="line">A gift that surely came from above 🙏. – Song of Songs 4:7</div>
-      <div class="line">Your voice like waters calm and deep 🌊,</div>
-      <div class="line">Your laughter wakes my soul from sleep 😄.</div>
-      <div class="line">You clothe my days in purest grace 🌸,</div>
-      <div class="line">With just one look, you bless this place ✨.</div>
-      <div class="line">“Many waters cannot quench love’s flame 🔥,”</div>
-      <div class="line">Still burns my heart when I speak your name ❤️. – Song of Songs 8:7</div>
-      <div class="line">Eliane, my beloved, my sacred muse 🎨,</div>
-      <div class="line">With you, I simply cannot lose 💪.</div>
-      <div class="line">You're more than beauty, more than kind 💖,</div>
-      <div class="line">A rare and godly heart combined 🙏.</div>
-      <div class="line">"She is clothed with strength and dignity 💪," they say,</div>
-      <div class="line">You live those words in every way 🌟. – Proverbs 31:25</div>
-      <div class="line">Your hands bring peace, your eyes bring cheer ✨,</div>
-      <div class="line">And I feel heaven when you're near 😇.</div>
-      <div class="line">Like the sunrise touches morning skies 🌅,</div>
-      <div class="line">Your beauty greets my sleepy eyes 😴.</div>
-      <div class="line">Each moment near you feels divine ✨,</div>
-      <div class="line">Like streams that flow, Your love unbound💞.</div>
-      <div class="line">In Your arms, forever near🔒,</div>
-      <div class="line">I find my peace, my soul sincere💖.</div>
-      <div class="line">Until my final breath is through 💨,</div>
-      <div class="line">Eliane, I’ll belong to you 💍.</div>
-      <div class="line final">With love, Jonathan.k❤️</div>
-    </div>
+<div class="poem-container">
+  <div class="line">To my answered prayer, Eliane - (Meaning: "God has answered")❤️‍🔥</div>
+  <div class="line">I have poured every word into describing how my heart beats for you 💓📝</div>
+  <div class="line">I’ve searched through gardens, picking flowers in hopes of finding the perfect one for you 🌹🌼</div>
+  <div class="line">I’ve passed diamonds and gold, seeking something that shines as brightly as you 💎✨</div>
+  <div class="line">I’ve watched the sun rise and fall, hoping to glimpse your smile in its light 🌅😊</div>
+  <div class="line">And still, I’ve found nothing like you—so unique, a masterpiece of grace 🎨🌟</div>
+  <div class="line">Crafted with care, and for that, I’ll forever treasure your beauty 🛠️💖</div>
+  <div class="line">You are a treasure no traveler could ever discover 🧭💫</div>
+  <div class="line">Crafted with care, and for that, I’ll forever treasure your beauty 🛠️💖</div>
+  <div class="line">Her worth is far above rubies and pearls. — Proverbs 31:10 💎</div>
+  <div class="line">The sweetest place to be is in someone’s thoughts 💭🍬</div>
+  <div class="line">The safest place to be is in someone’s heart 🛡️❤️</div>
+  <div class="line">To my surprise, you are in both 😲💘</div>
+  <div class="line">Will a poem make you smile? 📜😊</div>
+  <div class="line">Will a rose keep you awake at night? 🌹🌙</div>
+  <div class="line">Will a simple kiss bring peace to your mind? 😘🕊️</div>
+  <div class="line">Do I ask too much? 🤔❓</div>
+  <div class="line">Have I fallen too soon? 🫣💞</div>
+  <div class="line">So many questions—and yet, the only answer I need is YOU 🫵💍</div>
+  <div class="line final">With all my love, Jonathan.k ❤️</div>
+</div>
+
+  
+  <!-- Bible Verse added -->
+  <div class="line">Her worth is far above rubies and pearls. — Proverbs 31:10 💎</div>
+  
 
     <!-- Animated Refresh Button -->
     <button class="button refresh" onclick="location.reload()">refresh</button>
